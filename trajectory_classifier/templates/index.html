@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Exail Trajectory Classifier</title>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+    <style>
+
+        body{
+            background:#f4f7fb;
+        }
+
+        .navbar-custom{
+            background:#17365D;
+        }
+
+        .card{
+            border:none;
+            border-radius:15px;
+            box-shadow:0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .section-title{
+            color:#17365D;
+            font-weight:600;
+        }
+
+        .predict-btn{
+            background:#0B3D91;
+            border:none;
+            padding:12px;
+            font-weight:600;
+        }
+
+        .predict-btn:hover{
+            background:#072c69;
+        }
+
+        .badge-prediction{
+            font-size:1rem;
+            padding:10px 20px;
+        }
+
+        .info-card{
+            background:#17365D;
+            color:white;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+    <div class="container">
+
+        <span class="navbar-brand fw-bold">
+            Exail Technologies – Trajectory Classifier
+        </span>
+
+    </div>
+</nav>
+
+<div class="container mt-4">
+
+    <div class="row">
+
+        <!-- LEFT -->
+
+        <div class="col-lg-8">
+
+            <div class="card p-4">
+
+                <h3 class="section-title mb-4">
+                    Navigation Trajectory Characteristics
+                </h3>
+
+                <form action="/predict" method="POST">
+
+                    <h5 class="mb-3">General Information</h5>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label>Duration (s)</label>
+                            <input type="number"
+                                   step="0.01"
+                                   class="form-control"
+                                   name="duree_secondes"
+                                   required>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label>Distance (m)</label>
+                            <input type="number"
+                                   step="0.01"
+                                   class="form-control"
+                                   name="distance_metres"
+                                   required>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label>Equipment Type</label>
+                            <select
+                                    class="form-select"
+                                    name="type_equipement"
+                                    required>
+
+                                <option value="advans-lyra">
+                                    ADVANS LYRA
+                                </option>
+
+                                <option value="advans-ursa">
+                                    ADVANS URSA
+                                </option>
+
+                                <option value="advans-vega">
+                                    ADVANS VEGA
+                                </option>
+
+                                <option value="advans-vega-amphibious">
+                                    ADVANS VEGA AMPHIBIOUS
+                                </option>
+
+                                <option value="marins-bka">
+                                    MARINS BKA
+                                </option>
+
+                                <option value="phins-7io">
+                                    PHINS 7IO
+                                </option>
+
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label>Saturations</label>
+                            <input type="number"
+                                   step="0.01"
+                                   class="form-control"
+                                   name="saturations"
+                                   required>
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <h5 class="mb-3">Thermal Information</h5>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label>Temperature Min</label>
+                            <input type="number"
+                                   step="0.01"
+                                   class="form-control"
+                                   name="temp_min"
+                                   required>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label>Temperature Max</label>
+                            <input type="number"
+                                   step="0.01"
+                                   class="form-control"
+                                   name="temp_max"
+                                   required>
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <h5 class="mb-3">Dynamic Information</h5>
+
+                    <div class="row">
+
+                        <div class="col-md-4 mb-3">
+                            <label>Vibration RMS</label>
+                            <input type="number"
+                                   step="0.01"
+                                   class="form-control"
+                                   name="vibration_gRMS"
+                                   required>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label>Rotation Max</label>
+                            <input type="number"
+                                   step="0.01"
+                                   class="form-control"
+                                   name="vitesse_rotation_max"
+                                   required>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label>Acceleration Max</label>
+                            <input type="number"
+                                   step="0.01"
+                                   class="form-control"
+                                   name="acceleration_max"
+                                   required>
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <h5 class="mb-3">Quality Indicators</h5>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label>spZupt Rejection</label>
+
+                            <input type="number"
+                                   step="0.01"
+                                   class="form-control"
+                                   name="taux_rejection_spZupt"
+                                   required>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label>trZupt Rejection</label>
+
+                            <input type="number"
+                                   step="0.01"
+                                   class="form-control"
+                                   name="taux_rejection_trZupt"
+                                   required>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label>GPSH Rejection</label>
+
+                            <input type="number"
+                                   step="0.01"
+                                   class="form-control"
+                                   name="taux_rejection_GPSH"
+                                   required>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label>GPSV Rejection</label>
+
+                            <input type="number"
+                                   step="0.01"
+                                   class="form-control"
+                                   name="taux_rejection_GPSV"
+                                   required>
+                        </div>
+
+                    </div>
+
+                    <button
+                            type="submit"
+                            class="btn btn-primary w-100 predict-btn">
+
+                        Predict Trajectory
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="col-lg-4">
+
+            <div class="card info-card p-4 mb-4">
+<h4>Model Information</h4>
+
+<hr>
+
+<p><strong>Algorithm:</strong> Random Forest</p>
+
+<p><strong>Accuracy:</strong> 96.51%</p>
+
+<p><strong>Dataset:</strong> 859 trajectories</p>
+
+<p><strong>Classes:</strong> 3</p>
+
+<hr>
+
+<div class="d-grid gap-2">
+
+    <a href="/trajectories" 
+       class="btn btn-success">
+
+        Browse Database
+
+    </a>
+
+</div>
+
+            </div>
+
+            {% if prediction %}
+
+            <div class="card p-4">
+
+                <h4 class="section-title">
+
+                    Prediction Result
+
+                </h4>
+
+                <div class="text-center mt-3">
+
+                    <span class="badge bg-success badge-prediction">
+
+                        {{ prediction }}
+
+                    </span>
+
+                </div>
+
+                <div class="mt-4">
+
+                    {% for class_name, prob in confidence.items() %}
+
+                    <label>
+
+                        {{ class_name }}
+
+                        : {{ prob }}%
+
+                    </label>
+
+                    <div class="progress mb-3">
+
+                       <div class="progress">
+                    <div class="progress-bar bg-success"
+                        role="progressbar"
+                        aria-valuenow="{{ prob }}"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        style="width: {{ prob|float }}%">
+                        {{ "%.1f"|format(prob|float) }}%
+                    </div>
+                </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

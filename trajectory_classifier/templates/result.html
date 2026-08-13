@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Résultat</h2>
+
+<h3>
+
+Classe prédite :
+
+{{ prediction }}
+
+</h3>
+
+<hr>
+
+{% for label, value in confidence.items() %}
+
+<p>
+
+{{ label }}
+
+:
+
+{{ value }} %
+
+</p>
+
+{% endfor %}
+
+/
+
+{% endblock %}
