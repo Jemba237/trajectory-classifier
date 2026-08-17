@@ -3,15 +3,16 @@ from config import *
 
 
 def get_connection():
- print(DB_HOST,DB_USER,DB_PASSWORD)
- return pymysql.connect(
-        host=DB_HOST,
-        user=DB_USER,
-        password=DB_PASSWORD,
-        database="ExailPipeLAnd",
-        cursorclass=pymysql.cursors.DictCursor
-    )
-
+  conn = pymysql.connect(
+      host="mysql-210dc56f-trajectoryclassifier.j.aivencloud.com",
+      port=22179,
+      user="avnadmin",
+      password="AVNS_r2XV790QlIcIOKlBa1f",
+      database="defaultdb",
+      ssl={
+          "ca": "ca.pem"
+      }
+  )
 
 def get_trajectory(trajectory_id):
 
