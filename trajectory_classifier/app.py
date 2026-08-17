@@ -20,12 +20,24 @@ le = joblib.load(
 
 print(le.classes_)
 
+@app.route("/")
+def home():
+
+    return render_template(
+        "index.html",
+        prediction=None,
+        confidence=None
+    )
+
+
 @app.route("/testdb")
 def testdb():
 
     try:
 
         conn = get_connection()
+
+        conn.close()
 
         return "DB OK"
 
