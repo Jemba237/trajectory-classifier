@@ -174,6 +174,22 @@ def predict_selected():
         results=results
     )
 
+
+
+
+import os
+
+@app.route("/env")
+def env():
+
+    return {
+        "host": os.getenv("DB_HOST"),
+        "port": os.getenv("DB_PORT"),
+        "user": os.getenv("DB_USER"),
+        "database": os.getenv("DB_NAME")
+    }
+
+}
 # @app.route(
 #     "/predict-selected",
 #     methods=["POST"]
