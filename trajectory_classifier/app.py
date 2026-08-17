@@ -1,9 +1,9 @@
 from flask import Flask
 from flask import render_template
 from flask import request
-
+from config import *
 import joblib
-
+print(DB_HOST,DB_USER,DB_PASSWORD)
 from services.predictor import predict
 
 from services.database import (
