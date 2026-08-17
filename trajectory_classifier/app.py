@@ -189,7 +189,6 @@ def env():
         "database": os.getenv("DB_NAME")
     }
 
-}
 # @app.route(
 #     "/predict-selected",
 #     methods=["POST"]
