@@ -2,17 +2,22 @@ import pymysql
 from config import *
 
 
+import pymysql
+import ssl
+import os
+
 def get_connection():
-  return pymysql.connect(
-      host="mysql-210dc56f-trajectoryclassifier.j.aivencloud.com",
-      port=22179,
-      user="avnadmin",
-      password="AVNS_r2XV790QlIcIOKlBa1f",
-      database="defaultdb",
-      ssl={
-          "ca": "ca.pem"
-      }
-  )
+
+    return pymysql.connect(
+        host=os.getenv("DB_HOST"),
+        port=int(os.getenv("DB_PORT")),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        database=os.getenv("DB_NAME"),
+        ssl={"ssl": {}},
+        cursorclass=pymysql.cursors.DictCursor,
+        connect_timeout=30
+    )
 
 def get_trajectory(trajectory_id):
 
