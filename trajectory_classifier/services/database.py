@@ -3,7 +3,7 @@ from config import *
 
 
 def get_connection():
-  conn = pymysql.connect(
+  return pymysql.connect(
       host="mysql-210dc56f-trajectoryclassifier.j.aivencloud.com",
       port=22179,
       user="avnadmin",
