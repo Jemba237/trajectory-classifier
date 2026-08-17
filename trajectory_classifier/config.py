@@ -1,5 +1,7 @@
-DB_HOST=mysql-210dc56f-trajectoryclassifier.j.aivencloud.com
-DB_PORT=22179
-DB_NAME="defaultdb"
-DB_USER="avnadmin"
-DB_PASSWORD="AVNS_r2XV790QlIcIOKlBa1f"
+import os
+
+DB_HOST = os.getenv("DB_HOST")
+DB_PORT = os.getenv("DB_PORT")
+DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
