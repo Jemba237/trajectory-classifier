@@ -4,12 +4,11 @@ from config import *
 
 def get_connection():
 
-    return pymysql.connect(
-        host=os.environ["DB_HOST"],
-        port=int(os.environ["DB_PORT"]),
-        user=os.environ["DB_USER"],
-        password=os.environ["DB_PASSWORD"],
-        database="exailpipeland"
+ return pymysql.connect(
+        host=DB_HOST,
+        user=DB_USER,
+        password=DB_PASSWORD,
+        database="ExailPipeLAnd",
         cursorclass=pymysql.cursors.DictCursor
     )
 
