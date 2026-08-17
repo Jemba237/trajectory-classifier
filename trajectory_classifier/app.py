@@ -19,6 +19,21 @@ le = joblib.load(
 )
 
 print(le.classes_)
+
+@app.route("/testdb")
+def testdb():
+
+    try:
+
+        conn = get_connection()
+
+        return "DB OK"
+
+    except Exception as e:
+
+        return str(e)
+
+
 @app.route("/")
 def home():
 
