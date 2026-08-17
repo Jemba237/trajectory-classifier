@@ -7,6 +7,7 @@ print(DB_HOST,DB_USER,DB_PASSWORD)
 from services.predictor import predict
 
 from services.database import (
+    get_connection,
     get_trajectory,
     get_all_trajectories,
     save_prediction
