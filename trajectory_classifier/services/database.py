@@ -3,7 +3,7 @@ from config import *
 
 
 def get_connection():
-
+ print(DB_HOST,DB_USER,DB_PASSWORD)
  return pymysql.connect(
         host=DB_HOST,
         user=DB_USER,
